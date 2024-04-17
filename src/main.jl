@@ -64,6 +64,7 @@ function measure(ψ,Op,deg_thresh=1e-3)
     return λ_obs, ψ_collapsed/norm(ψ_collapsed)
 end
 
+
 function H(n,Δ,χ_x,χ_y,χ_z)
     n = n/norm(n)
     H_0 = Δ * ( n[1]*σ_n_j(4,1,1) + n[2]*σ_n_j(4,2,1) + n[3]*σ_n_j(4,3,1) )

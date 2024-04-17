@@ -11,15 +11,18 @@ using LaTeXStrings
 # Simulation parameters #
 #########################
 
-N = 500
-Δ = 1000
+
+N = 100
+Δ = 100
 Nt = 100
 
-χ_x = 1
-χ_y = 1
-χ_z = 1
+χ = 1
 
-Tmax = 2*π
+χ_x = χ
+χ_y = χ
+χ_z = χ
+
+Tmax = π
 t_array = Vector(range(0,Tmax,Nt))
 dt = Tmax/Nt
 
@@ -92,25 +95,25 @@ end
 
 
 
-t_array_normalised = t_array/(2*π*1) #careful, xi is hard coded!!!
+t_array_normalised = t_array/(π*1) #careful, xi is hard coded!!!
 
 # fidelity 
 width_px= 340.39020340390204  # or  width_inches*DPI
 
-scatter(t_array_normalised, overlap_t,size = (width_px,width_px*0.6),ylim=(-1.1,1.1),xtickfontsize=8,ytickfontsize=8,guidefont=font(10),dpi=600,widen=false,tickdirection=:out,right_margin = 4Plots.mm,left_margin = 0Plots.mm,bottom_margin = 0Plots.mm,fontfamilys = "Times New Roman",xlim=(-0.05 + t_array_normalised[1],t_array_normalised[end] + 0.05), legendfontsize=9,ylabel=L"\textrm{Observables}",xlabel=L"t \ /(2\pi /\chi)",label= L"\overline{\mathcal{F}}^{(0)}",title=L"N = "*"$N,   "*L"\Delta/\chi="*"$Δ",titlefontsize=10,background_color_legend=:transparent,ms=3,legend = :outertopright)
-
-
 # theory lines
 t_theory_array = Vector(range(0,1,1000))
 
-plot!(t_theory_array, sin.(4*π*t_theory_array.*n[1]),c = :orange,lw=3,label=false)
-plot!(t_theory_array, sin.(4*π*t_theory_array.*n[2]),c = :navy,lw=3,label=false)
-plot!(t_theory_array, sin.(4*π*t_theory_array.*n[3]),c = :magenta,lw=3,label=false)
+plot(t_theory_array, sin.(2*π*t_theory_array.*n[1]),c = :orange,lw=3,label=false)
+plot!(t_theory_array, sin.(2*π*t_theory_array.*n[2]),c = :navy,lw=3,label=false)
+plot!(t_theory_array, sin.(2*π*t_theory_array.*n[3]),c = :magenta,lw=3,label=false)
 
 
 scatter!(t_array_normalised, avg_x_2_t_avg,yerr=avg_x_2_t_err,ylim = (-1.1,1.1),c = :orange,label=L"\langle \sigma^{(1)}_x \rangle",ms=3)
 scatter!(t_array_normalised, avg_x_3_t_avg,yerr=avg_x_3_t_err,c = :navy,label=L"\langle \sigma^{(2)}_x \rangle",ms=3)
 scatter!(t_array_normalised, avg_x_4_t_avg,yerr=avg_x_4_t_err,c = :magenta,label=L"\langle \sigma^{(3)}_x \rangle",ms=3)
+
+
+scatter!(t_array_normalised, overlap_t,size = (width_px,width_px*0.6),ylim=(-1.1,1.1),xtickfontsize=8,ytickfontsize=8,guidefont=font(10),dpi=600,widen=false,tickdirection=:out,right_margin = 4Plots.mm,left_margin = 0Plots.mm,bottom_margin = 0Plots.mm,fontfamilys = "Times New Roman",xlim=(-0.05 + t_array_normalised[1],t_array_normalised[end] + 0.05), legendfontsize=9,ylabel=L"\textrm{Observables}",xlabel=L"t \quad (\pi /\chi)",label= L"\overline{\mathcal{F}}^{(0)}",title=L"N = "*"$N,   "*L"N_t="*"$Nt,    "*L"\Delta/\chi="*"$Δ",titlefontsize=10,background_color_legend=:transparent,ms=3,legend = false,m=:xcross,color=:black,markerstrokewidth=3,legendcolumn=-1)
 
 savefig("figs/observables_vs_t_N_500_Delta_1000.png")
 savefig("figs/observables_vs_t_N_500_Delta_1000.pdf")

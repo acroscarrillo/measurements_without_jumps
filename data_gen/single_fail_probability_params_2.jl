@@ -64,10 +64,10 @@ for m=ProgressBar(1:N_tot_runs)
 end
 
 P_threshold = 0.99
-prob = round(length(final_fidelity[ final_fidelity .< P_threshold ])/ N_tot_runs, sigdigits=3)
+prob = round(length(final_fidelity[ final_fidelity .> P_threshold ])/ N_tot_runs, sigdigits=3)
 
 width_px= 340.39020340390204  # or  width_inches*DPI
-scatter(final_fidelity,size = (width_px,width_px*0.6),label=false,ylabel=L"\mathcal{F}_f",xlab=L"\textrm{Trails}",xtickfontsize=8,ytickfontsize=8,guidefont=font(10),dpi=600,widen=false,tickdirection=:out,right_margin = 2Plots.mm,bottom_margin = 0Plots.mm,fontfamilys = "Times New Roman",legendfontsize=9,ms=3,ylim=(-0.1,1.1),title=L"N = "*"$N,   "*L"\Delta/\chi="*"$Δ,   "*L"\mathbb{P}[\mathcal{F}_f <"*"$P_threshold "*L"] = "*"$prob",alpha=0.75,titlefontsize=10)
+scatter(final_fidelity,size = (width_px,width_px*0.6),label=false,ylabel=L"\mathcal{F}_f",xlab=L"\textrm{Trails}",xtickfontsize=8,ytickfontsize=8,guidefont=font(10),dpi=600,widen=false,tickdirection=:out,right_margin = 2Plots.mm,bottom_margin = 0Plots.mm,fontfamilys = "Times New Roman",legendfontsize=9,ms=3,ylim=(-0.1,1.1),title=L"N = "*"$N,   "*L"\Delta/\chi="*"$Δ,   "*L"\mathbb{P}[\mathcal{F}_f >"*"$P_threshold "*L"] = "*"$prob",alpha=0.75,titlefontsize=10)
 
 hline!([0.95],lw=3, c=:red,label=L"\mathcal{F}_f = "*"$P_threshold",ls=:dash,legend=:left)
 

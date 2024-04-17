@@ -110,7 +110,7 @@ scatter!(t_array_normalised, avg_x_3_t_avg,yerr=avg_x_3_t_err,c = :navy,label=L"
 scatter!(t_array_normalised, avg_x_4_t_avg,yerr=avg_x_4_t_err,c = :magenta,label=L"\langle \sigma^{(3)}_x \rangle",ms=3)
 
 
-scatter!(t_array_normalised, overlap_t,size = (width_px,width_px*0.6),ylim=(-1.1,1.1),xtickfontsize=8,ytickfontsize=8,guidefont=font(10),dpi=600,widen=false,tickdirection=:out,right_margin = 4Plots.mm,left_margin = 0Plots.mm,bottom_margin = 0Plots.mm,fontfamilys = "Times New Roman",xlim=(-0.05 + t_array_normalised[1],t_array_normalised[end] + 0.05), legendfontsize=9,ylabel=L"\textrm{Observables}",xlabel=L"t \quad (\pi /\chi)",label= L"\overline{\mathcal{F}}^{(0)}",title=L"N = "*"$N,   "*L"N_t="*"$Nt,    "*L"\Delta/\chi="*"$Δ",titlefontsize=10,background_color_legend=:transparent,ms=3,legend = :outertopright,m=:xcross,color=:black,markerstrokewidth=3)
+scatter!(t_array_normalised, overlap_t,size = (width_px,width_px*0.6),ylim=(-1.1,1.1),xtickfontsize=8,ytickfontsize=8,guidefont=font(10),dpi=600,widen=false,tickdirection=:out,right_margin = 0Plots.mm,left_margin = 0Plots.mm,bottom_margin = 0Plots.mm,fontfamilys = "Times New Roman",xlim=(-0.05 + t_array_normalised[1],t_array_normalised[end] + 0.05), legendfontsize=9,ylabel=L"\textrm{Observables}",xlabel=L"t \quad (\pi /\chi)",label= L"\overline{\mathcal{F}}^{(0)}",title=L"N = "*"$N,   "*L"N_t="*"$Nt,    "*L"\Delta/\chi="*"$Δ",titlefontsize=10,background_color_legend=:transparent,ms=3,legend = false,m=:xcross,color=:black,markerstrokewidth=3,legend_columns=-1)
 
-# savefig("figs/observables_vs_t_N_100_Delta_50.png")
-# savefig("figs/observables_vs_t_N_100_Delta_50.pdf")
+savefig("figs/observables_vs_t_N_100_Delta_50.png")
+savefig("figs/observables_vs_t_N_100_Delta_50.pdf")
