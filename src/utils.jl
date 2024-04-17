@@ -1,12 +1,30 @@
+"""
+ψ_init(ψ_1)
 
+Helper function to append to the given initial state in the first qubit 3 qubits in the |+y> state. In other words, returns:
+
+    |ψ_0> = |ψ_1> ⨂ |+y> ⨂ |+y> ⨂ |+y> 
+
+where
+
+    |+y> = [1, im]/√(2)
+
+# Examples
+```julia-repl
+julia> round.(  ψ_init([1,0])', sigdigits=3)
+1×16 Matrix{ComplexF64}:
+    0.354-0.0im  0.0-0.354im  0.0-0.354im  -0.354-0.0im  0.0-0.354im  -0.354-0.0im  -0.354-0.0im  -0.0+0.354im  0.0-0.0im  0.0-0.0im  0.0-0.0im  0.0-0.0im  0.0-0.0im  0.0-0.0im  0.0-0.0im  0.0-0.0im
+````
+"""
 function ψ_init(ψ_1)
     y_plus = [1, im]/√(2)
     temp = ψ_1
-    for i=1:3
+    for _=1:3
         temp = kron(temp,y_plus)
     end
     return temp
 end
+
 
 function cond_uni(measured_outcome,j)
     outcome = sign(measured_outcome)

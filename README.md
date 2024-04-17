@@ -27,5 +27,5 @@ If you spot any mistakes, you want to improve the code or simply want to discuss
 #
 
 # To do:
-- Actually document the code.
+- Actually document.
 - Split data generation and data plotting
